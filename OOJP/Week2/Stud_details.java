@@ -10,7 +10,7 @@ class Stud_details {
         usn = sc.next();
         System.out.println("Enter the name:");
         name = sc.next();
-        System.out.println("Enter the marks for 8 subjects:");
+        System.out.println("Enter the grade points for 8 subjects:");
         for (int i = 0; i < 8; i++) {
             marks[i] = sc.nextInt();
         }
