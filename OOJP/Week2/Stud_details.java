@@ -26,7 +26,7 @@ class Stud_details {
 }
 
 class Student {
-    public static void main(String args[]) {
+    static void main(String args[]) {
         Stud_details s1[] = new Stud_details[3];
 
         for (int j = 0; j < 3; j++) {
