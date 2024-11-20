@@ -6,7 +6,6 @@ class Publication {
     private float cost;
     private int pageCount;
 
-    // Constructor
     Publication(String title, String writer, float cost, int pageCount) {
         this.title = title;
         this.writer = writer;
@@ -14,7 +13,6 @@ class Publication {
         this.pageCount = pageCount;
     }
 
-    // Getters
     String getTitle() {
         return this.title;
     }
@@ -31,7 +29,6 @@ class Publication {
         return this.pageCount;
     }
 
-    // Setters
     void setTitle(String title) {
         this.title = title;
     }
@@ -61,15 +58,12 @@ class BookCatalog {
     public static void main(String[] args) {
         System.out.println("Akshat Basra 1BM23CS020");
 
-        // Scanner to take user input
         Scanner input = new Scanner(System.in);
 
-        // Get number of books from user
         System.out.print("How many books would you like to enter? ");
         int numberOfBooks = input.nextInt();
         Publication[] catalog = new Publication[numberOfBooks];
 
-        // Input book details
         for (int i = 0; i < numberOfBooks; i++) {
             System.out.println("\nEntering details for Book " + (i + 1));
 
@@ -88,13 +82,11 @@ class BookCatalog {
             catalog[i] = new Publication(bookTitle, bookAuthor, bookPrice, bookPages);
         }
 
-        // Output book details
         System.out.println("\n--- Book Catalog ---");
         for (int i = 0; i < numberOfBooks; i++) {
             System.out.println(catalog[i].toString());
         }
 
-        // Close scanner to avoid resource leak
         input.close();
     }
 }
