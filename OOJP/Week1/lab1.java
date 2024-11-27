@@ -32,7 +32,6 @@ class EquationSolver {
             System.out.println("Root 1: " + r10 + " + " + r20 + "i");
             System.out.println("Root 2: " + r10 + " - " + r20 + "i");
         }
-        
         scanner.close();
     }
 }
