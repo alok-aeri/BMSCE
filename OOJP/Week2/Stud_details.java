@@ -9,13 +9,14 @@ class Stud_details {
 
     void getdetails() {
         System.out.println("Enter the USN:");
-        usn = sc.next();
+        usn = sc.nextLine();
         System.out.println("Enter the name:");
-        name = sc.next();
+        name = sc.nextLine();
         System.out.println("Enter the marks for 8 subjects:");
         for (int i = 0; i < 8; i++) {
             marks[i] = sc.nextInt();
         }
+        sc.nextLine();
     }
 
     void calci() {
@@ -30,7 +31,7 @@ class Stud_details {
             }
         }
         sgpa = (float)sum / 20;
-        System.out.println("GPA = " + sgpa);
+        System.out.println("SGPA = " + sgpa);
     }
 
     void display() {
@@ -42,8 +43,10 @@ class Stud_details {
     }
 }
 
-public class Student {
+public class lab2 {
     public static void main(String args[]) {
+        System.out.println("Alok 1BM23CS024");
+
         Stud_details s1[] = new Stud_details[3];
 
         for (int j = 0; j < 3; j++) {
@@ -58,7 +61,7 @@ public class Student {
         for (int j = 0; j < 3; j++) {
             s1[j].calci();
         }
-        
+
         for (int j = 0; j < 3; j++) {
             s1[j].display();
         }
