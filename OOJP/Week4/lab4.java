@@ -44,11 +44,11 @@ class CircleShape extends Shape {
 
 class ShapeAreaCalculator {
     public static void main(String[] args) {
-        System.out.println("Akshat Basra 1BM23CS020");
+        System.out.println("Alok 1BM23CS024");
 
-        RectangleShape rect = new RectangleShape(9, 5);
-        TriangleShape tri = new TriangleShape(10, 8);
-        CircleShape circ = new CircleShape(10, 10);
+        RectangleShape rect = new RectangleShape(40, 60);
+        TriangleShape tri = new TriangleShape(10, 5);
+        CircleShape circ = new CircleShape(1, 1);
 
         Shape shapeRef;
 
