@@ -47,37 +47,39 @@ class Publication {
 
     @Override
     public String toString() {
-        return "\nTitle: " + this.title + 
-               "\nAuthor: " + this.writer + 
-               "\nPrice: " + this.cost + 
-               "\nPages: " + this.pageCount;
+        return "\nTitle: " + this.title +
+                "\nAuthor: " + this.writer +
+                "\nPrice: " + this.cost +
+                "\nPages: " + this.pageCount;
     }
 }
 
-class BookCatalog {
+class lab3 {
     public static void main(String[] args) {
-        System.out.println("Akshat Basra 1BM23CS020");
+        System.out.println("Alok 1BM23CS024");
 
         Scanner input = new Scanner(System.in);
 
         System.out.print("How many books would you like to enter? ");
         int numberOfBooks = input.nextInt();
+        input.nextLine();  // Consume the leftover newline character
         Publication[] catalog = new Publication[numberOfBooks];
 
         for (int i = 0; i < numberOfBooks; i++) {
             System.out.println("\nEntering details for Book " + (i + 1));
 
             System.out.print("Enter book title: ");
-            String bookTitle = input.next();
+            String bookTitle = input.nextLine();  // Changed to nextLine()
 
             System.out.print("Enter author name: ");
-            String bookAuthor = input.next();
+            String bookAuthor = input.nextLine();  // Changed to nextLine()
 
             System.out.print("Enter book price: ");
             float bookPrice = input.nextFloat();
 
             System.out.print("Enter number of pages: ");
             int bookPages = input.nextInt();
+            input.nextLine();  // Consume the leftover newline character after reading an int
 
             catalog[i] = new Publication(bookTitle, bookAuthor, bookPrice, bookPages);
         }
