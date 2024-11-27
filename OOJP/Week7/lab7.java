@@ -71,22 +71,21 @@ class ExceptionsDemo {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Take input for Father's details
+        System.out.println("Alok 1BM23CS024");
+
         System.out.print("Enter Father's Name: ");
         String fatherName = sc.nextLine();
-        
+
         System.out.print("Enter Father's Age: ");
         int fatherAge = sc.nextInt();
-        
-        // Take input for Son's details
-        sc.nextLine();  // Consume the leftover newline character after nextInt
+
+        sc.nextLine();
         System.out.print("Enter Son's Name: ");
         String sonName = sc.nextLine();
-        
+
         System.out.print("Enter Son's Age: ");
         int sonAge = sc.nextInt();
 
-        // Create the Son object, which also creates the Father object
         Son son = new Son(sonName, sonAge, fatherName, fatherAge);
 
         System.out.println("Son's Age: " + son.sonAge);
