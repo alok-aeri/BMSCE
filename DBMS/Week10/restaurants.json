@@ -1,0 +1,7 @@
+[
+  {"_id":{"$oid":"674fb172c351442c2148190f"},"name":"Meghna Foods","town":"Jayanagar","cuisine":"Indian","score":8,"address":{"zipcode":"10001","street":"Jayanagar"}},
+  {"_id":{"$oid":"674fb172c351442c21481910"},"name":"Empire","town":"MG Road","cuisine":"Indian","score":7,"address":{"zipcode":"10100","street":"MG Road"}},
+  {"_id":{"$oid":"674fb172c351442c21481911"},"name":"Chinese WOK","town":"Indiranagar","cuisine":"Chinese","score":12,"address":{"zipcode":"20000","street":"Indiranagar"}},
+  {"_id":{"$oid":"674fb172c351442c21481912"},"name":"Kyotos","town":"Majestic","cuisine":"Japanese","score":9,"address":{"zipcode":"10300","street":"Majestic"}},
+  {"_id":{"$oid":"674fb172c351442c21481913"},"name":"WOW Momos","town":"Malleshwaram","cuisine":"Indian","score":5,"address":{"zipcode":"10400","street":"Malleshwaram"}}
+]
