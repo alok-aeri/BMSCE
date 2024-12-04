@@ -1,0 +1,229 @@
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.createCollection("restaurants");
+{ ok: 1 }
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.insertMany([
+...
+... { name: "Meghna Foods", town: "Jayanagar", cuisine: "Indian", score: 8, address: { zipcode: "10001", street: "Jayanagar“
+Uncaught:
+SyntaxError: Unterminated string constant. (3:109)
+
+  1 | db.restaurants.insertMany([
+  2 |
+> 3 | { name: "Meghna Foods", town: "Jayanagar", cuisine: "Indian", score: 8, address: { zipcode: "10001", street: "Jayanagar“
+    |                                                                                                              ^
+  4 |
+
+Atlas atlas-jjp6mb-shard-0 [primary] test>
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> } },
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | } },
+    | ^
+  2 |
+
+Atlas atlas-jjp6mb-shard-0 [primary] test>
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> { name: "Empire", town: "MG Road", cuisine: "Indian", score: 7, address: { zizipcode: "10100", street: "MG Road" } },
+...
+... { name: "Chinese WOK", town: "Indiranagar", cuisine: "Chinese", score: 12, address: { zipcode: "20000", street: "Indiranagar" } },
+...
+... { name: "Kyotos", town: "Majestic", cuisine: "Japanese", score: 9, address: { zipcode: "10300", street: "Majestic" } },
+...
+... { name: "WOW Momos", town: "Malleshwaram", cuisine: "Indian", score: 5, address: { zipcode: "10400", street: "Malleshwaram" }
+...
+... } ])
+Uncaught:
+SyntaxError: Missing semicolon. (1:22)
+
+> 1 | { name: "Empire", town: "MG Road", cuisine: "Indian", score: 7, address: { zipcode: "10100", street: "MG Road" } },
+    |                       ^
+  2 |
+  3 | { name: "Chinese WOK", town: "Indiranagar", cuisine: "Chinese", score: 12, address: { zipcode: "20000", street: "Indiranagar" } },
+  4 |
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.insertMany([
+...   { name: "Meghna Foods", town: "Jayanagar", cuisine: "Indian", score: 8, address: { zipcode: "10001", street: "Jayanagar" } },
+...   { name: "Empire", town: "MG Road", cuisine: "Indian", score: 7, address: { zipcode: "10100", street: "MG Road" } },
+...   { name: "Chinese WOK", town: "Indiranagar", cuisine: "Chinese", score: 12, address: { zipcode: "20000", street: "Indiranagar" } },
+...   { name: "Kyotos", town: "Majestic", cuisine: "Japanese", score: 9, address: { zipcode: "10300", street: "Majestic" } },
+...   { name: "WOW Momos", town: "Malleshwaram", cuisine: "Indian", score: 5, address: { zipcode: "10400", street: "Malleshwaram" } }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("674fb172c351442c2148190f"),
+    '1': ObjectId("674fb172c351442c21481910"),
+    '2': ObjectId("674fb172c351442c21481911"),
+    '3': ObjectId("674fb172c351442c21481912"),
+    '4': ObjectId("674fb172c351442c21481913")
+  }
+}
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.find({})
+[
+  {
+    _id: ObjectId("674fb172c351442c2148190f"),
+    name: 'Meghna Foods',
+    town: 'Jayanagar',
+    cuisine: 'Indian',
+    score: 8,
+    address: { zipcode: '10001', street: 'Jayanagar' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481910"),
+    name: 'Empire',
+    town: 'MG Road',
+    cuisine: 'Indian',
+    score: 7,
+    address: { zipcode: '10100', street: 'MG Road' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481911"),
+    name: 'Chinese WOK',
+    town: 'Indiranagar',
+    cuisine: 'Chinese',
+    score: 12,
+    address: { zipcode: '20000', street: 'Indiranagar' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481912"),
+    name: 'Kyotos',
+    town: 'Majestic',
+    cuisine: 'Japanese',
+    score: 9,
+    address: { zipcode: '10300', street: 'Majestic' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481913"),
+    name: 'WOW Momos',
+    town: 'Malleshwaram',
+    cuisine: 'Indian',
+    score: 5,
+    address: { zipcode: '10400', street: 'Malleshwaram' }
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.find({}).sort({ name: -1 })
+[
+  {
+    _id: ObjectId("674fb172c351442c21481913"),
+    name: 'WOW Momos',
+    town: 'Malleshwaram',
+    cuisine: 'Indian',
+    score: 5,
+    address: { zipcode: '10400', street: 'Malleshwaram' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c2148190f"),
+    name: 'Meghna Foods',
+    town: 'Jayanagar',
+    cuisine: 'Indian',
+    score: 8,
+    address: { zipcode: '10001', street: 'Jayanagar' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481912"),
+    name: 'Kyotos',
+    town: 'Majestic',
+    cuisine: 'Japanese',
+    score: 9,
+    address: { zipcode: '10300', street: 'Majestic' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481910"),
+    name: 'Empire',
+    town: 'MG Road',
+    cuisine: 'Indian',
+    score: 7,
+    address: { zipcode: '10100', street: 'MG Road' }
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481911"),
+    name: 'Chinese WOK',
+    town: 'Indiranagar',
+    cuisine: 'Chinese',
+    score: 12,
+    address: { zipcode: '20000', street: 'Indiranagar' }
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.find({ "score": { $lte: 10 } }, { _id: 1, name: 1, town: 1, cucuisine: 1 })
+[
+  {
+    _id: ObjectId("674fb172c351442c2148190f"),
+    name: 'Meghna Foods',
+    town: 'Jayanagar',
+    cuisine: 'Indian'
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481910"),
+    name: 'Empire',
+    town: 'MG Road',
+    cuisine: 'Indian'
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481912"),
+    name: 'Kyotos',
+    town: 'Majestic',
+    cuisine: 'Japanese'
+  },
+  {
+    _id: ObjectId("674fb172c351442c21481913"),
+    name: 'WOW Momos',
+    town: 'Malleshwaram',
+    cuisine: 'Indian'
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.aggregate([ { $group: { _id: "$name", average_score: { $avg: "$score" } } }
+... ])
+[
+  { _id: 'Chinese WOK', average_score: 12 },
+  { _id: 'Meghna Foods', average_score: 8 },
+  { _id: 'Kyotos', average_score: 9 },
+  { _id: 'WOW Momos', average_score: 5 },
+  { _id: 'Empire', average_score: 7 }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.restaurants.find({ "address.zipcode": /^10/ }, { name: 1, "address.street": 1, _id: 0 })
+[
+  { name: 'Meghna Foods', address: { street: 'Jayanagar' } },
+  { name: 'Empire', address: { street: 'MG Road' } },
+  { name: 'Kyotos', address: { street: 'Majestic' } },
+  { name: 'WOW Momos', address: { street: 'Malleshwaram' } }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --out=restaurants.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --out=restaurants.json
+    |               ^
+  2 |
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --out=restaurants.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --out=restaurants.json
+    |               ^
+  2 |
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> exit
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --out=restaurants.json
+2024-12-04T07:08:02.657+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.y2pvn.mongodb.net/test
+2024-12-04T07:08:02.864+0530    exported 5 records
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --query='{ "score": { "$lte": 10 } }' --out=restaurants_filtered.json
+2024-12-04T07:08:07.035+0530    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2024-12-04T07:08:07.035+0530    try 'mongoexport --help' for more information
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --fields=name,address.street --out=restaurants_name_and_address.json
+2024-12-04T07:08:14.265+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.y2pvn.mongodb.net/test
+2024-12-04T07:08:14.462+0530    exported 5 records
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --query='{ "score": { "$lte": 10 } }' --out=restaurants_filtered.json
+2024-12-04T07:08:19.524+0530    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2024-12-04T07:08:19.524+0530    try 'mongoexport --help' for more information
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=restaurants --query='{ "score": { "$lte": 10 } }' --out=restaurants_filtered.json
+2024-12-04T07:08:22.087+0530    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2024-12-04T07:08:22.087+0530    try 'mongoexport --help' for more information
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>
