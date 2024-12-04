@@ -1,0 +1,247 @@
+Microsoft Windows [Version 10.0.22631.4460]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\student>mongosh "mongodb+srv://cluster0.y2pvn.mongodb.net/" --apiVersion 1 --username cs024
+Enter password: **********
+Current Mongosh Log ID: 674fa7b1cf84882dbb432f5e
+Connecting to:          mongodb+srv://<credentials>@cluster0.y2pvn.mongodb.net/?appName=mongosh+2.0.0
+Using MongoDB:          8.0.3 (API Version 1)
+Using Mongosh:          2.0.0
+mongosh 2.3.4 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.createCollection("Customer");
+{ ok: 1 }
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.insertMany([{custid: 1, acc_bal:10000, acc_type:
+... "Saving"}, {custid: 1, acc_bal:20000, acc_type: "Checking"}, {custid: 3,
+... acc_bal:50000, acc_type: "Checking"}, {custid: 4, acc_bal:10000,
+... acc_type: "Saving"}, {custid: 5, acc_bal:2000, acc_type: "Checking"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("674fa7d1cf84882dbb432f5f"),
+    '1': ObjectId("674fa7d1cf84882dbb432f60"),
+    '2': ObjectId("674fa7d1cf84882dbb432f61"),
+    '3': ObjectId("674fa7d1cf84882dbb432f62"),
+    '4': ObjectId("674fa7d1cf84882dbb432f63")
+  }
+}
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.find({acc_bal: {$gt: 12000}, acc_type:"Checking"});
+[
+  {
+    _id: ObjectId("674fa7d1cf84882dbb432f60"),
+    custid: 1,
+    acc_bal: 20000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fa7d1cf84882dbb432f61"),
+    custid: 3,
+    acc_bal: 50000,
+    acc_type: 'Checking'
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.aggregate([{$group:{_id:"$custid", minBal:{$min:"$acc_bal"}, maxBal:
+... {$max:"$acc_bal"}}}]);
+[
+  { _id: 5, minBal: 2000, maxBal: 2000 },
+  { _id: 3, minBal: 50000, maxBal: 50000 },
+  { _id: 1, minBal: 10000, maxBal: 20000 },
+  { _id: 4, minBal: 10000, maxBal: 10000 }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.drop();
+true
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.find()
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.createCollection("Customer");
+{ ok: 1 }
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.insertMany([
+...   { custid: 1, acc_bal: 10000, acc_type: "Saving" },
+...   { custid: 1, acc_bal: 20000, acc_type: "Checking" },
+...   { custid: 3, acc_bal: 50000, acc_type: "Checking" },
+...   { custid: 4, acc_bal: 10000, acc_type: "Saving" },
+...   { custid: 5, acc_bal: 2000, acc_type: "Checking" }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("674fa8b9cf84882dbb432f64"),
+    '1': ObjectId("674fa8b9cf84882dbb432f65"),
+    '2': ObjectId("674fa8b9cf84882dbb432f66"),
+    '3': ObjectId("674fa8b9cf84882dbb432f67"),
+    '4': ObjectId("674fa8b9cf84882dbb432f68")
+  }
+}
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.find({acc_bal: {$gt: 12000}, acc_type:"Checking"});
+[
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f65"),
+    custid: 1,
+    acc_bal: 20000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f66"),
+    custid: 3,
+    acc_bal: 50000,
+    acc_type: 'Checking'
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.aggregate([{$group:{_id:"$custid", minBal:{$min:"$acc_bal"}, maxBal:
+... {$max:"$acc_bal"}}}]);
+[
+  { _id: 1, minBal: 10000, maxBal: 20000 },
+  { _id: 4, minBal: 10000, maxBal: 10000 },
+  { _id: 3, minBal: 50000, maxBal: 50000 },
+  { _id: 5, minBal: 2000, maxBal: 2000 }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --out=customerData.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --out=customerData.json
+    |               ^
+  2 |
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.find()
+[
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f64"),
+    custid: 1,
+    acc_bal: 10000,
+    acc_type: 'Saving'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f65"),
+    custid: 1,
+    acc_bal: 20000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f66"),
+    custid: 3,
+    acc_bal: 50000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f67"),
+    custid: 4,
+    acc_bal: 10000,
+    acc_type: 'Saving'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f68"),
+    custid: 5,
+    acc_bal: 2000,
+    acc_type: 'Checking'
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.countDocuments()
+5
+Atlas atlas-jjp6mb-shard-0 [primary] test> exit
+
+C:\Users\student>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --out=customerData.json
+'mongoexport' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\student>
+
+C:\Users\student>cd C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --out=customerData.json
+2024-12-04T06:32:22.815+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.y2pvn.mongodb.net/test
+2024-12-04T06:32:22.999+0530    exported 5 records
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoimport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --file="C:\Users\student\Downloads\customerData.json" --jsonArray
+2024-12-04T06:40:27.410+0530    Failed: open C:\Users\student\Downloads\customerData.json: The system cannot find the file specified.
+2024-12-04T06:40:27.422+0530    0 document(s) imported successfully. 0 document(s) failed to import.
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoimport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --file="C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin\customerData.json" --jsonArray
+2024-12-04T06:41:33.335+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.y2pvn.mongodb.net/test
+2024-12-04T06:41:33.366+0530    Failed: error reading separator after document #1: bad JSON array format - found no opening bracket '[' in input source
+2024-12-04T06:41:33.378+0530    0 document(s) imported successfully. 0 document(s) failed to import.
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoimport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --file="C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin\customerData.json" --jsonArray
+2024-12-04T06:45:09.889+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.y2pvn.mongodb.net/test
+2024-12-04T06:45:09.920+0530    Failed: error reading separator after document #1: bad JSON array format - found no opening bracket '[' in input source
+2024-12-04T06:45:09.922+0530    0 document(s) imported successfully. 0 document(s) failed to import.
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoimport --uri="mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --collection=Customer --file="C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin\customerData.json" --jsonArray
+2024-12-04T06:50:21.149+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.y2pvn.mongodb.net/test
+2024-12-04T06:50:21.228+0530    5 document(s) imported successfully. 0 document(s) failed to import.
+
+C:\Users\student\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongosh "mongodb+srv://cs024:1bm23cs024@cluster0.y2pvn.mongodb.net/test" --apiVersion 1 --username cs024
+Current Mongosh Log ID: 674fae73c351442c2148190e
+Connecting to:          mongodb+srv://<credentials>@cluster0.y2pvn.mongodb.net/test?appName=mongosh+2.0.0
+Using MongoDB:          8.0.3 (API Version 1)
+Using Mongosh:          2.0.0
+mongosh 2.3.4 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.find().pretty();
+[
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f64"),
+    custid: 1,
+    acc_bal: 10000,
+    acc_type: 'Saving'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f65"),
+    custid: 1,
+    acc_bal: 20000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f66"),
+    custid: 3,
+    acc_bal: 50000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f67"),
+    custid: 4,
+    acc_bal: 10000,
+    acc_type: 'Saving'
+  },
+  {
+    _id: ObjectId("674fa8b9cf84882dbb432f68"),
+    custid: 5,
+    acc_bal: 2000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fae556ee4705ca4ce761d"),
+    custid: 1,
+    acc_bal: 20000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fae556ee4705ca4ce761e"),
+    custid: 3,
+    acc_bal: 50000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fae556ee4705ca4ce761f"),
+    custid: 4,
+    acc_bal: 10000,
+    acc_type: 'Saving'
+  },
+  {
+    _id: ObjectId("674fae556ee4705ca4ce7620"),
+    custid: 5,
+    acc_bal: 2000,
+    acc_type: 'Checking'
+  },
+  {
+    _id: ObjectId("674fae556ee4705ca4ce7621"),
+    custid: 1,
+    acc_bal: 10000,
+    acc_type: 'Saving'
+  }
+]
+Atlas atlas-jjp6mb-shard-0 [primary] test> db.Customer.countDocuments();
+10
