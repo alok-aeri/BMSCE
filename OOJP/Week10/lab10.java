@@ -67,6 +67,8 @@ class Consumer implements Runnable {
 
 public class IPCExample {
     public static void main(String[] args) {
+        System.out.println("Alok, 1BM23CS024");
+
         SharedBuffer buffer = new SharedBuffer();
 
         Thread producerThread = new Thread(new Producer(buffer));
