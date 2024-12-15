@@ -6,7 +6,7 @@ public class SwingDemo {
 
     public SwingDemo() {
         JFrame jfrm = new JFrame("Divider App");
-        jfrm.setSize(275, 200); // Increase height for better UI spacing
+        jfrm.setSize(275, 200);
         jfrm.setLayout(new FlowLayout());
         jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -19,7 +19,6 @@ public class SwingDemo {
         JLabel blab = new JLabel();
         JLabel anslab = new JLabel();
 
-        // Set error label font and color
         err.setForeground(Color.RED);
         err.setFont(new Font("Arial", Font.BOLD, 12));
 
@@ -30,7 +29,7 @@ public class SwingDemo {
         jfrm.add(alab);
         jfrm.add(blab);
         jfrm.add(anslab);
-        jfrm.add(err);  // Add error label at the end to make it stand out
+        jfrm.add(err);
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -42,7 +41,7 @@ public class SwingDemo {
                     alab.setText("A = " + a);
                     blab.setText("B = " + b);
                     anslab.setText("Ans = " + ans);
-                    err.setText(""); // Clear any previous error messages
+                    err.setText("");
 
                 } catch (NumberFormatException e) {
                     alab.setText("");
@@ -61,6 +60,7 @@ public class SwingDemo {
             }
         });
 
+        System.out.println("Alok, 1BM23CS024");
         jfrm.setVisible(true);
     }
 
