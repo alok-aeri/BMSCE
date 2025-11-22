@@ -83,6 +83,7 @@ def hill_climbing(state):
         step += 1
 
 
+
 # ---------------- MAIN ----------------
 if __name__ == "__main__":
     print("Hill Climbing for 4-Queens Problem")
